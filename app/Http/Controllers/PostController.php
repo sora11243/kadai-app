@@ -60,6 +60,7 @@ class PostController extends Controller
             return dd('存在しない投稿です');
         }
 
+
         // 投稿者を取得
         $user = $post->user();
 
