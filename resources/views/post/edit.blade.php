@@ -22,6 +22,11 @@
                 <textarea name="postContent" id="" cols="30" rows="10">{{ $post->content }}</textarea>
             </div>
             <input type="hidden" name="postid" value="{{$post->id}}" />
+            @error('postContent')
+            <p>
+                {{ $message }}
+            </p>
+            @enderror
             <div class="save-button">
                 <button class="button-white">変更を保存</button>
             </div>
@@ -35,11 +40,11 @@
         display: flex;
         flex-direction: column;
     }
-    
+
     .post-edit-page .title {
         padding: 10px 0 0 10px;
     }
-    
+
     .post-edit-page .save-button {
         display: flex;
         justify-content: end;
