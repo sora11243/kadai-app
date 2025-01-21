@@ -122,9 +122,18 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
+        $rules = [
+            '' => 'required|max:100',
+        ];
+
+        $messages = ['required' => '必須項目です', 'max' => '100文字以下にしてください。'];
+
+        Validator::make($request->all(), $rules, $messages)->validate();
+
         $user = new User;
+        $user->name = $request->input('new_name');
         $user->email = $request->input('new_email');
-        $user->password = $repuest->input('new_password');
+        $user->password = $request->input('new_password');
         $user->save();
 
         return redirect('/login');
