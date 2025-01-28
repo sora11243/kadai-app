@@ -13,24 +13,24 @@
 
 <body class="">
     <x-header></x-header>
-    <div class="page singup-page">
+    <div class="page singin-page">
         <form class="form" action="/signup" method="post">
             @csrf
-            <div class="form-item name">
+            <div class="form-item">
                 <label for="name">名前</label>
                 <input type="text" id="name" name="new_name" />
             </div>
-            <div class="form-item email">
+            <div class="form-item">
                 <label for="email">Email</label>
                 <input type="text" id="email" name="new_email" />
             </div>
-            <div class="form-item password">
+            <div class="form-item">
                 <label for="password">Password</label>
                 <input type="password" id="password" name="new_password" />
             </div>
-            @if ($errorMessage)
-            <div class="error-message font-red">{{ $errorMessage }}</div>
-            @endif
+            @error($rules)
+            <div class="error-message font-red">{{ $message }}</div>
+            @enderror
             <div class="login-button">
                 <button class="button-white" type="submit">新規登録</button>
             </div>
