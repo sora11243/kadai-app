@@ -18,17 +18,23 @@
             @csrf
             <div class="form-item">
                 <label for="name">名前</label>
-                <input type="text" id="name" name="new_name" />
+                <input type="text" id="name" name="name" />
             </div>
+            @error('name')
+            <div class="error-message font-red">{{ $message }}</div>
+            @enderror
             <div class="form-item">
                 <label for="email">Email</label>
-                <input type="text" id="email" name="new_email" />
+                <input type="text" id="email" name="email" />
             </div>
+            @error('email')
+            <div class="error-message font-red">{{ $message }}</div>
+            @enderror
             <div class="form-item">
                 <label for="password">Password</label>
-                <input type="password" id="password" name="new_password" />
+                <input type="password" id="password" name="password" />
             </div>
-            @error($rules)
+            @error('password')
             <div class="error-message font-red">{{ $message }}</div>
             @enderror
             <div class="login-button">

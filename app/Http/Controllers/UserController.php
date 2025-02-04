@@ -124,20 +124,26 @@ class UserController extends Controller
     public function store(Request $request)
     {
         $rules = [
-            'new_email' => 'required|email',
-            'new_name' => 'required',
-            'new_password' => 'required',
+            'name' => 'required|max:100',
+            'email' => 'required|email|unique:users',
+            'password' => 'required|min:8',
         ];
 
-        $messages = ['required' => '必須項目です', 'email' => '100文字以下にしてください。'];
-        Validator::make($request->all(), $rules, $messages)->validate();
+        $message = [
+            'required' => '必須項目です',
+            'max' => '100文字以下にしてください。',
+            'email' => 'メールを使用してください',
+            'unique' => 'このメールアドレスはすでに使用されています',
+            'min' => '8文字以上にしてください。',
+        ];
+        Validator::make($request->all(), $rules, $message)->validate();
 
         $user = new User;
-        $user->name = $request->input('new_name');
-        $user->email = $request->input('new_email');
-        $user->password = $request->input('new_password');
+        $user->name = $request->input('name');
+        $user->email = $request->input('email');
+        $user->password = $request->input('password');
         $user->save();
-
-        return redirect('/user/{id}');
+        Session::put('uesr', $user);
+        return redirect('/');
     }
 }

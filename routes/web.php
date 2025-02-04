@@ -21,6 +21,7 @@ use App\Http\Controllers\FollowController;
 | ホーム
 | -------------------------------------------------------------------------
 */
+
 /** ホーム画面遷移 */
 Route::get('/', [HomeController::class, 'index']);
 
@@ -76,7 +77,7 @@ Route::get('user/{id}/follow', [FollowController::class, 'index']);
 Route::get('user/{id}/follower', [FollowController::class, 'index']);
 
 /** フォロワー/フォロー解除処理 */
-Route::put('follow/{id}',[FollowController::class, 'update']);
+Route::put('follow/{id}', [FollowController::class, 'update']);
 
 /*-------------------------------------------------------------------------
 | 新規登録
