@@ -36,7 +36,7 @@ class LoginController extends Controller
         }
 
         // 成功
-        Session::put('uesr', $user);
+        Session::put('user', $user);
         return redirect('/');
     }
 
